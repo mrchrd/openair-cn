@@ -139,7 +139,7 @@ install_1.1.5_freediameter_from_source() {
 
   echo "Install freeDiameter 1.1.5 from source"
   # libpq-dev 'may' be not needed
-  if [ $IS_CONTAINER -eq 0 ]
+  if [ $IS_CONTAINER -eq 0 ]; then
     $SUDO apt-get install $OPTION \
       autoconf  \
       automake  \
