@@ -121,10 +121,14 @@ function main()
   fi
 
   if [ $var_check_install_oai_software -gt 0 ];then
-    update_package_db
-    [[ $? -ne 0 ]] && return $?
+    if [ $IS_CONTAINER -eq 0 ]
+      update_package_db
+      [[ $? -ne 0 ]] && return $?
     
-    check_install_hss_software  $force
+      check_install_hss_software  $force
+    else
+      init_submodules
+    fi
     if [ $? -ne 0 ]; then
         echo_error "Error: HSS software installation failed"
         return 1

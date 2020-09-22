@@ -139,29 +139,31 @@ install_1.1.5_freediameter_from_source() {
 
   echo "Install freeDiameter 1.1.5 from source"
   # libpq-dev 'may' be not needed
-  $SUDO apt-get install $OPTION \
-    autoconf  \
-    automake  \
-    bison     \
-    build-essential \
-    cmake \
-    cmake-curses-gui  \
-    debhelper \
-    flex  \
-    g++ \
-    gcc \
-    gdb \
-    libgcrypt-dev \
-    libidn11-dev \
-    libmysqlclient-dev \
-    libpq-dev \
-    libsctp1 \
-    libsctp-dev \
-    libxml2-dev \
-    mercurial \
-    python-dev \
-    ssl-cert \
-    swig
+  if [ $IS_CONTAINER -eq 0 ]
+    $SUDO apt-get install $OPTION \
+      autoconf  \
+      automake  \
+      bison     \
+      build-essential \
+      cmake \
+      cmake-curses-gui  \
+      debhelper \
+      flex  \
+      g++ \
+      gcc \
+      gdb \
+      libgcrypt-dev \
+      libidn11-dev \
+      libmysqlclient-dev \
+      libpq-dev \
+      libsctp1 \
+      libsctp-dev \
+      libxml2-dev \
+      mercurial \
+      python-dev \
+      ssl-cert \
+      swig
+  fi
   ret=$?;[[ $ret -ne 0 ]] && return $ret
 
   if [[ $prompt =~ [yY](es)* ]]

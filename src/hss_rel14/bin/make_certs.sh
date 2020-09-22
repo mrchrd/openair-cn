@@ -44,7 +44,7 @@ openssl genrsa -out $HOST.key.pem 1024
 openssl req -new -batch -out $HOST.csr.pem -key $HOST.key.pem -subj /CN=$HOST.$DOMAIN/C=FR/ST=BdR/L=Aix/O=fD/OU=Tests
 openssl ca -cert cacert.pem -keyfile cakey.pem -in $HOST.csr.pem -out $HOST.cert.pem -outdir . -batch
 
-IS_CONTAINER=`egrep -c "docker|kubepods" /proc/self/cgroup`
+IS_CONTAINER=`egrep -c "buildah|docker|kubepods|libpod" /proc/self/cgroup`
 
 if [ $IS_CONTAINER -eq 0 ]
 then

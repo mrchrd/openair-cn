@@ -22,7 +22,7 @@ LFLAGS := -g -pthread -lpthread -Wl,-rpath,/usr/local/lib/x86_64-linux-gnu:/usr/
 LIBS := \
  $(OAI_HSS_BUILD_DIR)/util/lib/libc3po.a \
  $(OAI_HSS_BUILD_DIR)/hsssec/lib/libhsssec.a \
- /usr/local/lib/libpistache.a \
+ /usr/local/lib64/libpistache.a \
  /usr/local/lib/libfdcore.so \
  /usr/local/lib/libfdproto.so \
  -L/usr/local/lib/x86_64-linux-gnu \

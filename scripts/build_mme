@@ -170,8 +170,12 @@ function main()
   fi
   
   if [ $var_check_install_oai_software -gt 0 ];then
-    update_package_db
-    check_install_mme_software  $force
+    if [ $IS_CONTAINER -eq 0 ]
+      update_package_db
+      check_install_mme_software  $force
+    else
+      $FD_INSTALL_FUNC $force
+    fi
     if [ $? -ne 0 ]; then
         echo_error "Error: MME software installation failed"
         return 1
